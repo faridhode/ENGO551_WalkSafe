@@ -7,6 +7,14 @@
 		<meta charset=utf-8 />
 
         <title>SafeWalk</title>
+		
+		<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+		<script src='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js'></script>	
+		<link href='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.css' rel='stylesheet' />
+		<style>
+			body { margin:0; padding:0; }
+			#map { position:absolute; top:0; bottom:0; width:100%; }
+		</style>
 	
 	</head>
 
@@ -14,7 +22,28 @@
     <body>
 	
 		<h1> Welcome to SafeWalk </h2>
-	
+		
+		<div id='map'></div>
+
+		<script>
+		L.mapbox.accessToken = 'pk.eyJ1IjoiZmhvZGUxMjMiLCJhIjoiY2xmMW5uYWFuMDJscTQ0bnhvYjRrdTE5dSJ9.ZYEavyNFWMwOR8ChoNW4XA';
+		var map = L.map('map').setView([51.0240, -114.0737], 11);
+		
+		var baseLayer = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/satellite-v9/tiles/{z}/{x}/{y}?access_token=' + L.mapbox.accessToken, {
+			attribution: 'Map data &copy; <a href="http://mapbox.com">Mapbox</a>'
+		});
+		
+		var crimeLayer = L.tileLayer(
+			'https://api.mapbox.com/styles/v1/fhode123/clg73fh1e000i01odlg8nluq1/tiles/{z}/{x}/{y}?access_token=' + L.mapbox.accessToken, {
+				tileSize: 512,
+				zoomOffset: -1,
+				attribution: '© <a href="https://apps.mapbox.com/feedback/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+		});
+		
+		baseLayer.addTo(map);
+		crimeLayer.addTo(map);
+		
+		</script>
 	
 	</body>
 
