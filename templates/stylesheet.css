@@ -1,0 +1,91 @@
+h1 {
+    background-color: black;
+    color: #fcba03;
+    text-align: center;
+}
+
+#id{
+    color: #fc032c;
+    text-align: center;
+    text-decoration-line: underline;
+    text-decoration-color: #fc032c;
+    text-decoration-style: solid;
+}
+
+body {
+    color: black;
+    text-align: center;
+    text-indent: 50px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+table {
+    border: 1px solid black;
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+td {
+    border: 1px solid black;
+    padding: 1px;
+}
+
+th {
+    border: 1px solid black;
+    padding: 10px;
+    background: lightgrey;
+}
+
+a[href="index.html"]{
+    color:#32a852;
+}
+
+a[href="MyFavePlaces.html"]{
+    color:red;
+}
+
+a[href="MyFaveAnime.html"]{
+    color:#fc03f0;
+}
+
+a[href="MyFavePlayers.html"]{
+    color:#9803fc;
+}
+
+.nba{
+
+    font-weight: bold;
+    font-style: italic;
+}
+
+.bolded{
+    font-weight: bold;
+}
+
+
+
+ul li {
+    color: blue;
+    text-align: left;
+}
+
+ol > li{
+    color: magenta;
+    text-align: center;
+}
+
+<style>
+    @media (min-width: 650px){
+        body{
+            background-color: white;
+         }
+     }
+
+    @media (max-width: 649px){
+        body{
+            background-color: #f5f1b3;
+         }
+     }
+</style>
