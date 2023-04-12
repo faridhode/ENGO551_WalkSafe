@@ -88,19 +88,12 @@ def home():
 
 	if find:
 		
-		query = f"""SELECT * FROM books WHERE title ILIKE '%{find}%' or isbn ILIKE '%{find}%' or author ILIKE '%{find}%'"""
-		
-		if len(find) == 4:
-			try:
-				intfind = int(find)
-				query = f"SELECT * FROM books WHERE year = {intfind}"
-			except:
-				intfind = 0
-		
+		query = f"""SELECT * FROM session """#WHERE username = '%{find}%'"""
+				
 		cursor.execute(query)
 
 	else:
-		query = "SELECT * FROM books"
+		query = "SELECT * FROM session"
 		cursor.execute(query)
 
 	rows = cursor.fetchall()
