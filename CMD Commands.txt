@@ -1,5 +1,5 @@
 cd C:\Users\farid\Documents\GitHub\ENGO551_WalkSafe
 set FLASK_APP=application.py
 set FLASK_DEBUG=1
-set DATABASE_URL=postgresql://postgres:password123@localhost/Lab1
+set DATABASE_URL=postgresql://postgres:password123@localhost/FinalProject
 flask run
