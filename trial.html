@@ -1,40 +1,96 @@
+<!DOCTYPE html>
 <html>
-
-    <head>
+  <head>
+    <meta charset="UTF-8">
+    <title>Delay CSV Reader</title>
+	<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+	<script src='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js'></script>
+	<link href='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.css' rel='stylesheet' />
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<style>
+	  body { margin:0; padding:0; }
+	  #map { width: 600px; height: 800px; margin-top: 150px; }
+	</style>
+  </head>
+  <body>
+  
+	<button id="query-button">Execute query</button>
+	<div id="result"></div>
 	
-        <title>SafeWalk</title>
-		
-		<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-		<script src='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js'></script>	
-		<link href='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.css' rel='stylesheet' />
-		<style>
-			body { margin:0; padding:0; }
-			#map { position:absolute; top:200; bottom:400; width:100%; }
-		</style>
+	<div id='map'></div>
 	
-	</head>
-
-
-    <body>
-	
-		<h1> Welcome to SafeWalk </h2>
+    <script>
+      	
+		L.mapbox.accessToken = 'pk.eyJ1IjoiZmhvZGUxMjMiLCJhIjoiY2xmMW5uYWFuMDJscTQ0bnhvYjRrdTE5dSJ9.ZYEavyNFWMwOR8ChoNW4XA';
+		var map = L.map('map').setView([51.0240, -114.0737], 11);
 		
-		<form>
-			<label for="uname">Username:</label><br>
-			<input type="text" id="uname" name="uname"><br>
-			<label for="pword">Password:</label><br>
-			<input type="password" id="pword" name="pword"><br><br>
-			<input type="submit" name="button1" value="Register">
-			<input type="submit" name="button2" value=" Log In ">
-		</form>
+		var baseLayer = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/satellite-v9/tiles/{z}/{x}/{y}?access_token=' + L.mapbox.accessToken, {
+			attribution: 'Map data &copy; <a href="http://mapbox.com">Mapbox</a>'
+		});
 		
+		var crimeLayer = L.tileLayer(
+			'https://api.mapbox.com/styles/v1/fhode123/clg73fh1e000i01odlg8nluq1/tiles/{z}/{x}/{y}?access_token=' + L.mapbox.accessToken, {
+				tileSize: 512,
+				zoomOffset: -1,
+				attribution: '© <a href="https://apps.mapbox.com/feedback/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+		});
 		
-		
-		<button onclick="getGpsData()">Get GPS Data</button>
-		<div id="gps-data"></div>
-		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-		<script src="app.js"></script>
-	
-	</body>
-
+		baseLayer.addTo(map);
+		crimeLayer.addTo(map);
+	  
+	  const delay = 1000;  // 1 second delay
+      
+      const myArray = [
+		[	51.037045	,	-114.045156	],
+		[	51.03714	,	-114.044985	],
+		[	51.037511	,	-114.044781	],
+		[	51.037787	,	-114.044754	],
+		[	51.037926	,	-114.044738	],
+		[	51.038017	,	-114.044695	],
+		[	51.038135	,	-114.044631	],
+		[	51.038249	,	-114.044561	],
+		[	51.038398	,	-114.04448	],
+		[	51.038496	,	-114.044427	],
+		[	51.038664	,	-114.044346	],
+		[	51.038921	,	-114.044207	],
+		[	51.039072	,	-114.044121	],
+		[	51.039295	,	-114.044019	],
+		[	51.039518	,	-114.043896	],
+		[	51.039744	,	-114.043767	],
+		[	51.039932	,	-114.043665	],
+		[	51.040145	,	-114.043569	],
+		[	51.0403	,	-114.043477	],
+		[	51.040462	,	-114.043397	],
+		[	51.040661	,	-114.043279	],
+		[	51.040914	,	-114.043158	],
+		[	51.041023	,	-114.043106	],
+		[	51.041157	,	-114.04304	],
+		[	51.041164	,	-114.043299	],
+		[	51.041144	,	-114.043642	],
+		[	51.041158	,	-114.044018	],
+		[	51.041205	,	-114.044329	],
+		[	51.041313	,	-114.044576	],
+		[	51.041421	,	-114.044855	],
+		[	51.041515	,	-114.045091	],
+		[	51.041428	,	-114.05219	],
+		[	51.041272	,	-114.045595	]
+	  ];
+	  
+	  const rows = myArray.length;
+	  
+	  $(document).ready(function() {
+      $('#query-button').click(function() {
+        $.ajax({
+          url: 'http://localhost:3000/query',
+          success: function(data) {
+            $('#result').text(data);
+          }
+        });
+      });
+    });
+	  
+	  
+	  
+    </script>
+  </body>
 </html>
