@@ -31,25 +31,21 @@
 
         <table>
             <tr>
-                <th>ISBN</th>
-                <th>Title</th>
-                <th>Author</th>
-                <th>Year</th>
+                <th>Session</th>
+
             </tr>
 
             {% for row in rows %}
             <tr>
                 <td><a href="{{ url_for('book', isbn=row[0]) }}">{{row[0] }}</a></td>
-                <td>{{row[1] }}</td>
-                <td>{{row[2] }}</td>
-                <td>{{row[3] }}</td>
+ 
             </tr>
             {% endfor %}
 
         </table>
 
         {% else %}
-            <p> There were no matches for your search.</p>
+            <p> You don't have any runs yet! </p>
         {% endif %}
 
 
