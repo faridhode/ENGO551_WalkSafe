@@ -22,6 +22,11 @@
 			<input type="hidden" name="find" value="{{uname}}">
             <button type="submit">Look at previous runs</button>
         </form>
+		
+		<form action="{{ url_for('track')}}" method="get">
+			<input type="field" name="find" value="Name your run">
+            <button type="submit">Track a new run?</button>
+        </form>
 
          <br/> <br/>
 

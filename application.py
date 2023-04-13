@@ -118,6 +118,10 @@ def book(sessionid):
 	cursor.execute("ROLLBACK")
 	return render_template("book.html", rows=rows)
 
+@app.route("/track.html", methods=["GET", "POST"])
+def track():
+        return render_template('track.html')
+
 
 if __name__=="__main__":
 	app.run(debug=True)
