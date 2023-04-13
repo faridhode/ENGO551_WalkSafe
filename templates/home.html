@@ -37,7 +37,7 @@
 
             {% for row in rows %}
             <tr>
-                <td><a href="{{ url_for('book', isbn=row[0]) }}">{{row[2] }}</a></td>
+                <td><a href="{{ url_for('book', sessionid=row[0]) }}">{{row[2] }}</a></td>
  
             </tr>
             {% endfor %}

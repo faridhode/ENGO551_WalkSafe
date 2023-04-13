@@ -88,7 +88,7 @@ def home():
 
 	if find:
 		
-		query = f"""SELECT * FROM session WHERE username = '%{find}%'"""
+		query = f"""SELECT * FROM session""" # WHERE username = '%{find}%'"""
 				
 		cursor.execute(query)
 
@@ -105,13 +105,13 @@ def logout():
 
         return render_template('logout.html')
 
-@app.route("/book/<string:isbn>", methods=["GET", "POST"])
-def book(isbn):
+@app.route("/book/<string:sessionid>", methods=["GET", "POST"])
+def book(sessionid):
 
 	cursor = connection.cursor()
 
 	# displaying the selected books info
-	query = f"SELECT * FROM books WHERE isbn='{isbn}'"
+	query = f"SELECT * FROM markers WHERE sessionid={isbn}"
 	cursor.execute(query)
 	book = cursor.fetchone()
 
