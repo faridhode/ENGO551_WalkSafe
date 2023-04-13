@@ -120,7 +120,8 @@ def book(sessionid):
 
 @app.route("/track.html", methods=["GET", "POST"])
 def track():
-        return render_template('track.html')
+        find = request.args.get("find")
+        return render_template('track.html', sessionname=find)
 
 
 if __name__=="__main__":

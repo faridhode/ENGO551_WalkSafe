@@ -87,15 +87,26 @@
 			  setTimeout(function() {
 				console.log(i);
 				var marker = L.marker([myArray[i][0], myArray[i][1]]).addTo(map);
-			  }, i* 1000);
-			  
-			  if(i == 28) {
+				if(i == 28) {
+				soundAlarm()
 			  
 			  }
+			  }, i* 1000);
+			  
+			  
 			  
 			}
 
-			
+			function soundAlarm() {
+			  // Create a new Audio object and set the source to an alarm sound file
+			  var alarmAudio = new Audio('http://cd.textfiles.com/atarilibrary/atari_cd06/SOUND/WAV/WOWO.WAV');
+			  
+			  // Play the alarm sound
+			  alarmAudio.play();
+
+			  // Create a new browser popup
+			  //window.alert('ALARM!');
+			}
 		</script>
 
     </body>
