@@ -111,23 +111,12 @@ def book(sessionid):
 	cursor = connection.cursor()
 
 	# displaying the selected books info
-	query = f"SELECT * FROM markers WHERE sessionid={isbn}"
+	query = f"SELECT *, ST_AsText(geom) FROM markers WHERE sessionid={sessionid}"
 	cursor.execute(query)
-	book = cursor.fetchone()
-
-	# displaying the selected books reviews
-	query = f"SELECT * FROM reviews WHERE isbn='{isbn}'"
-	cursor.execute(query)
-	reviews = cursor.fetchall()
-
-	if request.method == "POST":
-		user = request.form.get("user")
-		review = request.form.get("review")
-		query = f"INSERT INTO reviews (isbn, review, username) VALUES ('{isbn}', '{review}', '{user}')"
-		cursor.execute(query)
-		connection.commit()
-
-	return render_template("book.html", book=book, reviews=reviews)
+	#book = cursor.fetchone()
+	rows = cursor.fetchall()
+        
+	return render_template("book.html", rows=rows)
 
 
 if __name__=="__main__":
