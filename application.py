@@ -88,23 +88,22 @@ def home():
 
 	if find:
 		
-		query = f"""SELECT * FROM session """#WHERE username = '%{find}%'"""
+		query = f"""SELECT * FROM session WHERE username = '%{find}%'"""
 				
 		cursor.execute(query)
 
-	else:
-		query = "SELECT * FROM session"
-		cursor.execute(query)
+	
 
 	rows = cursor.fetchall()
 
-	return render_template("home.html", rows=rows)
+	return render_template("home.html", rows=rows, uname=session["username"])
 
 
 @app.route("/logout.html", methods=["GET", "POST"])
 def logout():
+        session.pop('username', None)
 
-	return render_template('logout.html')
+        return render_template('logout.html')
 
 @app.route("/book/<string:isbn>", methods=["GET", "POST"])
 def book(isbn):
