@@ -92,11 +92,11 @@ def home():
 				
 		cursor.execute(query)
 
-	
+		rows = cursor.fetchall()
 
-	rows = cursor.fetchall()
-
-	return render_template("home.html", rows=rows, uname=session["username"])
+		return render_template("home.html", rows=rows, uname=session["username"])
+	else:
+                return render_template("home.html", uname=session["username"])
 
 
 @app.route("/logout.html", methods=["GET", "POST"])
@@ -115,7 +115,7 @@ def book(sessionid):
 	cursor.execute(query)
 	#book = cursor.fetchone()
 	rows = cursor.fetchall()
-        
+	cursor.execute("ROLLBACK")
 	return render_template("book.html", rows=rows)
 
 
