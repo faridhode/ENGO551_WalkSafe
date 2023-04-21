@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block heading %}
+    {{page_title}}
+{% endblock %}
+
+{% block header2 %}
+    Please sign in to access your routes
+{% endblock %}
+
+{% block body %}
+
+    <body>
+		<div class="form-group" style="margin: 20px;" align="center">
+		<p> New User?</p>
+			<a class="btn btn-primary" href="register.html" role="button" style="width: 300px;" style="padding: 10px;">Register here!</a>
+		<br>
+			<p>Or returning user?</p>
+			<a class="btn btn-primary" href="login.html" role="button" style="width: 300px;" style="padding: 10px;">Log in here!</a>
+		</p>
+		</div>
+		    
+	</body>
+
+{% endblock %}

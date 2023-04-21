@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block heading %}
+    Welcome to WalkSafe
+{% endblock %}
+
+{% block header2 %}
+    Logged out of your account
+{% endblock %}
+
+{% block body %}
+    <head>
+        <title>Walksafe</title>
+    </head>
+
+    <body>
+		<div class="form-group" style="margin: 20px;" align="center">
+		<p> New User?</p>
+			<a class="btn btn-primary" href="register.html" role="button" style="width: 300px;" style="padding: 10px;">Register here!</a>
+		<br>
+			<p>Or returning user?</p>
+			<a class="btn btn-primary" href="login.html" role="button" style="width: 300px;" style="padding: 10px;">Log in here!</a>
+		</p>
+		</div>
+		    
+	</body>
+{% endblock %}}

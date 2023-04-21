@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block heading %}
+    {{page_title}}
+{% endblock %}
+
+{% block header2 %}
+    Welcome back, {{uname}}!
+    <a class="btn btn-primary" href="logout.html" role="button" style="padding: 5px 10px; font-size: 14px; margin-left: 10px;">Logout</a>
+
+{% endblock %}
+
+{% block body %}
+
+
+    <body>
+        <h3>What do you want to do today?</h3>
+        <form action="{{ url_for('home')}}" method="get">
+			<input type="hidden" name="find" value="{{uname}}">
+            <button type="submit">Look at previous runs</button>
+        </form>
+
+		<form action="{{ url_for('track')}}" method="get">
+            <button type="submit">Track a new run?</button>
+			<input type="field" name="find" value="Name your run">
+
+        </form>
+
+        {% if rows %}
+
+        <table>
+            <tr>
+                <th>Session</th>
+
+            </tr>
+
+            {% for row in rows %}
+            <tr>
+                <td><a href="{{ url_for('book', sessionid=row[0]) }}">{{row[2] }}</a></td>
+ 
+            </tr>
+            {% endfor %}
+
+        </table>
+
+        {% else %}
+            <p> You don't have any runs yet! </p>
+        {% endif %}
+
+
+    </body>
+{% endblock %}

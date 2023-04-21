@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block heading %}
+    {{page_title}}
+{% endblock %}
+
+{% block header2 %}
+    Register Here
+{% endblock %}
+
+{% block body %}
+    <body>
+	<div class="form-group" style="margin: 20px;" align="center">
+		<form action="{{ url_for('register')}}" method="post">
+			<label for="uname">Username:</label><br>
+			<input type="text" id="uname" name="uname"><br>
+			<label for="pword">Password:</label><br>
+			<input type="password" id="pword" name="pword"><br><br>
+			<button type="submit">Register</button>
+		</form>
+	</div>
+		
+		    
+	</body>
+{% endblock %}
